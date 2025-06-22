@@ -2,14 +2,12 @@ using System;
 
 namespace FactoryMethodPatternExample
 {
-    // 1. Product interface
     public interface IDocument
     {
         void Open();
         void Close();
     }
 
-    // 2. Concrete products
     public class WordDocument : IDocument
     {
         public void Open() => Console.WriteLine("Opening Word document");
@@ -27,8 +25,6 @@ namespace FactoryMethodPatternExample
         public void Open() => Console.WriteLine("Opening Excel document");
         public void Close() => Console.WriteLine("Closing Excel document");
     }
-
-    // 3. Creator – abstract factory
     public abstract class DocumentFactory
     {
         public abstract IDocument CreateDocument();
@@ -46,7 +42,6 @@ namespace FactoryMethodPatternExample
         }
     }
 
-    // 4. Concrete factories
     public class WordDocumentFactory : DocumentFactory
     {
         public override IDocument CreateDocument() => new WordDocument();
@@ -61,8 +56,6 @@ namespace FactoryMethodPatternExample
     {
         public override IDocument CreateDocument() => new ExcelDocument();
     }
-
-    // 5. Client / test
     class Program
     {
         static void Main(string[] args)
